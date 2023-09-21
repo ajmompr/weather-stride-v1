@@ -1,0 +1,26 @@
+<h1>WHat to Wear on Your Run!</h1>
+<h3>Forecasted Conditions</h3>
+<dl>
+  <dt>Projected Time</dt>
+  <dd></dd>
+  <dt>Location</dt>
+  <dd> <%= @user_loc %> </dd>
+  <dt>Temperature</dt>
+  <dd></dd>
+  <dt>Humidity</dt>
+  <dd></dd>
+  <dt>Chance of Precipitation</dt>
+  <dd></dd>
+  <dt>Current Conditions</dt>
+  <dd></dd>
+</dl>
+<h3>You should wear this: </h3>
+<ul>
+  <li></li>
+</ul>
+<form action="/next_hour" method="post">
+  <button>Check Conditions for Next Hour</button>
+</form>
+<form action="/">
+  <button>Choose New Location</button>
+</form>

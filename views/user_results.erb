@@ -1,0 +1,86 @@
+<div class="container">
+  <h1 class="header"> What to Wear on Your Run! </h1>
+
+  <div class="current_cond_list">
+    <h3 class="sub_heading_1"> Current Conditions </h3>
+    <dl>
+      <dt class="description_term"> Location </dt>
+      <dd> <%= @user_loc %> </dd>
+      <dt class="description_term"> Temperature </dt>
+      <dd> <%= @user_temp %> </dd>
+      <dt class="description_term"> Humidity </dt>
+      <dd> <%= @user_humidity %> </dd>
+      <dt class="description_term"> Chance of Precipitation </dt>
+      <dd> <%= @user_precip_chance %> </dd>
+      <dt class="description_term">Precipation Type</dt>
+      <dd> <%= @user_precip_type %> </dd>
+      <dt class="description_term"> Current Conditions </dt>
+      <dd> <%= @user_current_conditions %> </dd>
+    </dl>
+  </div>
+
+  <div class="wear_list">
+    <h3 class="sub_heading_1"> You should wear this </h3>
+    <h5 class="sub_heading"> Always Bring </h5>
+    <ul>
+      <li> Photo ID </li>
+      <li> Medical Condition Card (if applicable) </li>
+      <li> Health Insurance Card (if applicable) </li>
+    </ul>
+    <h5 class="sub_heading_2" > Tops </h5>
+    <ul>
+      <% if @user_temp <= 40 %>
+        <% @cold_tops.each do |tops| %>
+        <li> <%= tops %></li>
+        <% end %>
+      <% elsif @user_temp > 40 && @user_temp <= 70 %> 
+        <% @medium_tops.each do |tops| %>
+        <li> <%= tops %> </li> 
+        <% end %>
+      <% elsif @user_temp > 70 && @user_temp <= 98.6  %>
+        <% @hot_tops.each do |tops| %>
+        <li> <%= tops %> </li> 
+        <% end %>
+      <% end %> 
+    </ul>
+
+    <h5 class="sub_heading"> Bottoms </h5>
+    <ul>
+      <% if @user_temp <= 40 %>
+        <% @cold_bottoms.each do |bottoms| %>
+        <li> <%= bottoms %></li>
+        <% end %>
+      <% elsif @user_temp > 40 && @user_temp <= 70 %> 
+        <% @medium_bottoms.each do |bottoms| %>
+        <li> <%= bottoms %> </li> 
+        <% end %>
+      <% elsif @user_temp > 70 && @user_temp <= 98.6  %>
+        <% @hot_bottoms.each do |bottoms| %>
+        <li> <%= bottoms %> </li> 
+        <% end %>
+      <% end %> 
+    </ul> 
+
+    <h5 class="sub_heading"> Head Gear </h5>
+    <ul>
+      <% if @user_temp <= 40 %>
+      <li> <%= @cold_head_gear %> </li>
+      <% else %>
+      <li> <%= @head_gear %> </li>
+      <% end %>
+    </ul>
+
+    <h5 class="sub_heading"> Hand Gear </h5>
+    <ul>
+      <% if @user_temp <= 40  && @precipProbability.to_f < 0.4 %>
+      <li> <%= @cold_hand_gear %></li>
+      <% elsif @user_temp > 40 && @precipProbability.to_f >= 0.4 %>
+      <li> <%= @wet_hand_gear %> </li>
+      <% else %>
+      <li> None </li>
+      <% end %> 
+    </ul>
+  </div> 
+</div>
+
+<button href="/" class="location_button" type="submit"> Choose New Location </button>
